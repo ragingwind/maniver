@@ -1,6 +1,6 @@
 # maniver [![Build Status](https://travis-ci.org/ragingwind/maniver.svg?branch=master)](https://travis-ci.org/ragingwind/maniver)
 
-> My stylish module
+> Manage [manifest version of Chrome apps / extensions](https://developer.chrome.com/apps/manifest/version)
 
 
 ## Install
@@ -13,33 +13,65 @@ $ npm install --save maniver
 ## Usage
 
 ```js
-var maniver = require('maniver');
+var ManiVer = require('maniver');
 
-maniver('unicorns');
-//=> unicorns & rainbows
+
+var maniver = new ManiVer();
+assert.equal(maniver.version(), '1.0.0');
+
+maniver.version('1');
+assert.equal(maniver.version(), '1');
+
+maniver.version('1.0');
+assert.equal(maniver.version(), '1.0');
+
+maniver.version('1');
+maniver.build();
+assert.equal(maniver.version(), '1.0.0.1');
+
+maniver.version('1.0.9');
+maniver.maintenance();
+assert.equal(maniver.version(), '1.0.10');
+
+maniver.version('1.9');
+maniver.minor();
+assert.equal(maniver.version(), '1.10');
+
+maniver.version('1.0.9');
+maniver.major();
+maniver.major();
+assert.equal(maniver.version(), '3.0.9');
 ```
 
 
 ## API
 
-### maniver(input, [options])
+### ManiVer(version)
 
-#### input
+Create a instance for maniver with version string.
 
-*Required*  
-Type: `string`
+### version(version)
 
-Lorem ipsum.
+*Optional*  
+version: `string`
 
-#### options
+Set/Get version string
 
-##### foo
+### build()
 
-Type: `boolean`  
-Default: `false`
+Increase a build number as 0.0.0.1, it will be added if not exist.
 
-Lorem ipsum.
+### maintenance()
 
+Increase a maintenance build number same as 0.0.1, it will be added if not exist.
+
+### minor()
+
+Increase a minor build number as 0.1, it will be added if not exist.
+
+### major()
+
+Increase major build number as 1.0, it will be added if not exist.
 
 ## License
 
