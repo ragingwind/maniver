@@ -1,20 +1,6 @@
 'use strict';
 
-function isValidVersion(ver) {
-  var verarr = ver.indexOf('.') >= 0 ? ver.split('.') : [ver];
-
-  if (verarr.length > 4 || verarr.length === 0) {
-    return false;
-  }
-
-  return verarr.map(function(v) {
-    if (/^[0]\d+/.test(v) || Number(v) > 99999) {
-      return false;
-    }
-
-    return true;
-  }).indexOf(false) === -1;
-}
+var isManiVersion = require('is-maniver');
 
 function version(ver, length) {
   // Check that build number overflow
@@ -56,7 +42,7 @@ function Version(newver) {
 
 Version.prototype.version = function (newver) {
   if (newver){
-    if (isValidVersion(newver)) {
+    if (isManiVersion(newver)) {
       this._version = newver.split('.');
     }
   }

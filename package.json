@@ -21,7 +21,9 @@
   "keywords": [
     ""
   ],
-  "dependencies": {},
+  "dependencies": {
+    "is-maniver": "^0.1.1"
+  },
   "devDependencies": {
     "mocha": "*"
   }
