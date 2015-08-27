@@ -48,22 +48,26 @@ Version.prototype.version = function (newver) {
   }
 
   return this._version.join('.');
-}
+};
 
 Version.prototype.build = function() {
   this._version = up(this._version, 4);
-}
+  return this;
+};
 
 Version.prototype.maintenance = function() {
   this._version = up(this._version, 3);
-}
+  return this;
+};
 
 Version.prototype.minor = function() {
   this._version = up(this._version, 2);
-}
+  return this;
+};
 
 Version.prototype.major = function() {
   this._version = up(this._version, 1);
-}
+  return this;
+};
 
 module.exports = Version;

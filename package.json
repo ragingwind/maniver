@@ -22,7 +22,8 @@
     ""
   ],
   "dependencies": {
-    "is-maniver": "^0.1.1"
+    "is-maniver": "^0.1.1",
+    "meow": "^3.3.0"
   },
   "devDependencies": {
     "mocha": "*"

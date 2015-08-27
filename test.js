@@ -1,5 +1,7 @@
 'use strict';
 var assert = require('assert');
+var path = require('path');
+var fs = require('fs');
 var ManiVer = require('./');
 
 it('should returns valid version has valid format', function () {
@@ -138,4 +140,12 @@ it('should returns valid updated maintenance version', function () {
   maniver.version('65535.65535.65535');
   maniver.major();
   assert.equal(maniver.version(), '65535.65535.65535');
+});
+
+it('should returns valid updated version for manifest', function () {
+  var manifest = JSON.parse(fs.readFileSync(path.relative(process.cwd(), 'fixture/manifest.json'), 'utf8'));
+  var maniver = new ManiVer(manifest.version);
+
+  manifest.version = maniver.version();
+  assert.equal(manifest.version, '1.0.1');
 });
