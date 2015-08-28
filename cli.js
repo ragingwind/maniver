@@ -39,7 +39,7 @@ try {
 
   fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, '\t'));
 
-  console.log(manifestPath, 'has been updated to ', manifest.version);
+  console.log(manifestPath, 'has been updated to', manifest.version);
 } catch (e) {
   console.error(e);
 }
