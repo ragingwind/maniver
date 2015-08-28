@@ -146,6 +146,6 @@ it('should returns valid updated version for manifest', function () {
   var manifest = JSON.parse(fs.readFileSync(path.relative(process.cwd(), 'fixture/manifest.json'), 'utf8'));
   var maniver = new ManiVer(manifest.version);
 
-  manifest.version = maniver.version();
+  manifest.version = maniver.major().version();
   assert.equal(manifest.version, '1.0.1');
 });
