@@ -12,6 +12,11 @@ $ npm install --save maniver
 
 ## Usage
 
+```sh
+maniver manifest.json build
+// manifest.json has been updated to 0.0.1.3
+```
+
 ```js
 var ManiVer = require('maniver');
 
