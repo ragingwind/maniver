@@ -1,6 +1,6 @@
 {
   "name": "maniver",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Manage [manifest version of Chrome apps / extensions](https://developer.chrome.com/apps/manifest/version)",
   "license": "MIT",
   "repository": "ragingwind/maniver",
