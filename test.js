@@ -6,7 +6,7 @@ var ManiVer = require('./');
 
 it('should returns valid version has valid format', function () {
   var maniver = new ManiVer();
-  assert.equal(maniver.version(), '1.0.0');
+  assert.equal(maniver.version(), '0.0.0');
 
   maniver.version('1');
   assert.equal(maniver.version(), '1');
@@ -40,7 +40,7 @@ it('should returns valid version has valid format', function () {
 it('should returns valid updated build version', function () {
   var maniver = new ManiVer();
   maniver.build();
-  assert.equal(maniver.version(), '1.0.0.1');
+  assert.equal(maniver.version(), '0.0.0.1');
 
   maniver.version('1');
   maniver.build();
@@ -67,10 +67,10 @@ it('should returns valid updated build version', function () {
 it('should returns valid updated maintenance version', function () {
   var maniver = new ManiVer();
   maniver.maintenance();
-  assert.equal(maniver.version(), '1.0.1');
+  assert.equal(maniver.version(), '0.0.1');
 
   maniver.maintenance();
-  assert.equal(maniver.version(), '1.0.2');
+  assert.equal(maniver.version(), '0.0.2');
 
   maniver.version('1.0.9');
   maniver.maintenance();
@@ -93,10 +93,10 @@ it('should returns valid updated maintenance version', function () {
 it('should returns valid updated minor version', function () {
   var maniver = new ManiVer();
   maniver.minor();
-  assert.equal(maniver.version(), '1.1.0');
+  assert.equal(maniver.version(), '0.1.0');
 
   maniver.minor();
-  assert.equal(maniver.version(), '1.2.0');
+  assert.equal(maniver.version(), '0.2.0');
 
   maniver.version('1.9');
   maniver.minor();
@@ -119,10 +119,10 @@ it('should returns valid updated minor version', function () {
 it('should returns valid updated maintenance version', function () {
   var maniver = new ManiVer();
   maniver.major();
-  assert.equal(maniver.version(), '2.0.0');
+  assert.equal(maniver.version(), '1.0.0');
 
   maniver.major();
-  assert.equal(maniver.version(), '3.0.0');
+  assert.equal(maniver.version(), '2.0.0');
 
   maniver.version('1.0.9');
   maniver.major();
@@ -148,4 +148,23 @@ it('should returns valid updated version for manifest', function () {
 
   manifest.version = maniver.major().version();
   assert.equal(manifest.version, '1.0.1');
+});
+
+it('should returns valid updated version with build scheme', function () {
+  var maniver = new ManiVer();
+
+  maniver.version('build');
+  assert.equal(maniver.version(), '0.0.0.1');
+  
+  maniver.version('builder');
+  assert.equal(maniver.version(), '0.0.0.1');
+
+  maniver.version('maintenance');
+  assert.equal(maniver.version(), '0.0.1.1');
+  
+  maniver.version('minor');
+  assert.equal(maniver.version(), '0.1.1.1');
+  
+  maniver.version('major');
+  assert.equal(maniver.version(), '1.1.1.1');
 });

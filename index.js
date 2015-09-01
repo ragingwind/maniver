@@ -37,13 +37,15 @@ function up(verarr, length) {
 }
 
 function Version(newver) {
-  this.version(newver || '1.0.0');
+  this.version(newver || '0.0.0');
 }
 
 Version.prototype.version = function (newver) {
   if (newver){
     if (isManiVersion(newver)) {
       this._version = newver.split('.');
+    } else if (this[newver]) {
+      this[newver]();
     }
   }
 
