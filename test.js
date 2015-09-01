@@ -168,3 +168,11 @@ it('should returns valid updated version with build scheme', function () {
   maniver.version('major');
   assert.equal(maniver.version(), '1.1.1.1');
 });
+
+it('should returns valid updated version with static method', function () {
+  assert.equal(ManiVer.version('0.0.1', 'build'), '0.0.1.1');
+  assert.equal(ManiVer.version('0.0.1', 'maintenance'), '0.0.2');
+  assert.equal(ManiVer.version('0.1.1', 'minor'), '0.2.1');
+  assert.equal(ManiVer.version('0.0.1', 'major'), '1.0.1');
+});
+

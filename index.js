@@ -72,4 +72,9 @@ Version.prototype.major = function() {
   return this;
 };
 
+Version.version = function (maniver, newver) {
+  var ver = new Version(maniver);
+  return ver.version(newver);
+};
+
 module.exports = Version;
